@@ -9,6 +9,7 @@
 - [Why Existing Software Infrastructure Falls Short](#why-existing-software-infrastructure-falls-short)
 - [PromiseGrid as a Response](#promisegrid-as-a-response)
 - [Promise Theory as an Important Foundation](#promise-theory-as-an-important-foundation)
+- [What a PromiseGrid Message Looks Like](#what-a-promisegrid-message-looks-like)
 - [Technical Direction in Plain Language](#technical-direction-in-plain-language)
 - [Governance, Stewardship, and Shared Resources](#governance-stewardship-and-shared-resources)
 - [What This Could Mean for FAB26 and Beyond](#what-this-could-mean-for-fab26-and-beyond)
@@ -17,14 +18,15 @@
 - [Tiny Demo Ideas for a Manufacturing Audience](#tiny-demo-ideas-for-a-manufacturing-audience)
 - [Why This Matters](#why-this-matters)
 - [Invitation](#invitation)
+- [Further Reading](#further-reading)
 - [Suggested Companion Visuals and Diagrams](#suggested-companion-visuals-and-diagrams)
 - [Suggested Tiny Demos](#suggested-tiny-demos)
 
 ## CSWG, PromiseGrid, and the Coordination Infrastructure Behind Local Production
 
-Draft white paper for FAB26 show and tell and follow-on sharing.
+Working white paper by the Community Systems Working Group.
 
-This document is intended as a readable companion to a short presentation at FAB26. It is written for people working in fablabs, makerspaces, community workshops, small manufacturing networks, and related projects who are already asking how production can become more local, more collaborative, and less dependent on fragile centralized systems. Our purpose is not to claim that we have finished the answer. It is to explain the problem that the Community Systems Working Group has been working on, describe PromiseGrid as one emerging technical response, and invite others to follow the work, challenge it, and help test it as prototypes become available over the next couple of months.
+We are writing this document for people working in fablabs, makerspaces, community workshops, small manufacturing networks, and related projects who are already asking how production can become more local, more collaborative, and less dependent on fragile centralized systems. Our purpose is not to claim that we have finished the answer. It is to explain the problem we have been working on, describe PromiseGrid as one emerging technical response, and invite others to follow the work, challenge it, and help test it as prototypes become available over the next couple of months.
 
 ## A Manufacturing Shift That Also Changes Infrastructure
 
@@ -57,6 +59,44 @@ PromiseGrid is one attempt to do that. The project describes itself as a consens
 An important part of the intellectual background here is Promise Theory, which is one of the underpinning inspirations behind PromiseGrid. Promise Theory starts from a simple but powerful idea: an agent can only make promises about its own behavior. It cannot truly command another agent into reliability. Cooperation happens when different agents make and keep promises that others can observe, rely on, and respond to. In practice, this means a person, machine, software service, workshop, or partner organization is best understood not simply as something to be controlled, but as a participant making certain commitments under certain conditions. That shift matters because distributed manufacturing rarely works through pure command. It works through negotiated cooperation across many semi-autonomous actors.
 
 Promise Theory also helps clarify several ideas that are easy to blur in ordinary operations language. A promise is not the same as a demand. A request is not the same as compliance. A refusal or non-commitment is not automatically a failure. Trust is not global and abstract; it is local, relational, and built from experience of which promises are kept, broken, declined, or renegotiated. For manufacturing networks, this is a practical lens rather than a philosophical extra. A partner lab may promise fabrication capacity for a certain class of jobs, but not for every urgent request. A machine steward may promise maintenance within a certain time window, but only when parts and labor are available. A workshop may promise access to trained members, but not to untrained visitors. Promise Theory gives us language for describing these realities honestly instead of hiding them behind simplistic assumptions of centralized control.
+
+## What a PromiseGrid Message Looks Like
+
+It is useful to make this concrete. PromiseGrid messages are not just generic packets moving around a network. They are structured envelopes that identify what protocol is being spoken and what kind of promise is being made.
+
+At a simple level, one active PromiseGrid pattern looks like this:
+
+```text
+grid([42(pCID), payload])
+```
+
+This is the compact form used in some constrained scenarios.
+
+- `grid(...)`: says this is a PromiseGrid envelope
+- `42(pCID)`: identifies the protocol specification being used
+- `payload`: contains the actual message body defined by that protocol
+
+For more expressive cases, a fuller envelope shape looks like this:
+
+```text
+grid([42(pCID), parents, payload, proof])
+```
+
+- `42(pCID)`: the protocol identifier
+- `parents`: links to earlier related messages or objects
+- `payload`: the content of the current promise
+- `proof`: the signature or other proof material used to verify it
+
+This matters because PromiseGrid is designed so that meaning is not hidden in a vague application layer. The protocol is explicit. The message shape is explicit. The relationship to earlier messages can be explicit. The proof can be explicit. That makes it easier to ask practical questions such as: who made this promise, what exactly was promised, what earlier commitment does this depend on, and what evidence supports it.
+
+One concrete example from current work is an order-status message used in a constrained device setting:
+
+```text
+grid([42(pCID), payload])
+payload = ["MSG", "gateway-bob", "m4-ivan", 1, "BT-1042", "created"]
+```
+
+In plain language, that payload says a sender is making a status promise about order `BT-1042`. Another message might acknowledge that status update. The point is not the syntax by itself. The point is that the message structure makes the promise legible.
 
 ## Technical Direction in Plain Language
 
@@ -121,6 +161,14 @@ The broader implication of all this is that distributed manufacturing may succee
 ## Invitation
 
 That is the invitation behind this work. We hope people who encounter these ideas at FAB26, or later through this write-up, will stay close to the journey as prototypes emerge in the next couple of months. We hope some will share use cases, critiques, and design questions from their own fablabs or manufacturing communities. We hope others will want to user test early tools once they are ready. And we hope the conversation remains grounded in practice, because the real measure of this work is not whether the architecture sounds elegant. It is whether communities can use it to become more capable, more resilient, and more self-governing in the everyday work of making things together.
+
+## Further Reading
+
+For readers who want to go deeper, the accompanying presentation can be read alongside this paper as a shorter narrative overview. Readers may also want to explore:
+
+1. Community Systems Working Group: <https://cswg.infrastructures.org/>
+2. PromiseGrid: <https://github.com/promisegrid/promisegrid>
+3. PromiseGrid wire-lab: <https://github.com/promisegrid/wire-lab>
 
 ## Suggested Companion Visuals and Diagrams
 

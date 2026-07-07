@@ -8,9 +8,8 @@ focus on Community Systems Working Group and PromiseGrid.
 
 This repo is the working layer behind two outward-facing artifacts:
 
-- `whitepaper_draft.md` for a readable companion document that can be shared
-  with an external audience
-- `presentation_draft.txt` for slide-story structure and talk framing
+- `whitepaper_draft.md` as the primary external-facing document
+- `presentation_draft.txt` as the accompanying slide-story structure
 
 The README keeps the more internal context out of the white paper itself:
 research basis, repo notes, working assumptions, and demo-development notes.

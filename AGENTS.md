@@ -1,50 +1,23 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- Keep packages at module root or under purpose-named top-level directories (`contexts/`, `state/`, etc.); avoid `internal/` and `pkg/`.
-- Keep planning artifacts in per-protocol `protocols/<slug>.d/TODO/` directories (harness-level under `protocols/wire-lab.d/TODO/`) and maintain the master cross-listed index at `protocols/wire-lab.d/TODO/TODO.md` sorted by priority. Each `protocols/<slug>.d/TODO/` also has its own per-protocol `TODO.md` queue.
+- Keep prose drafts, presentation decks, and small repo tools in purpose-named top-level paths; avoid `internal/` and `pkg/`.
+- Keep planning artifacts in the root `TODO/` directory. Optional root `DR/` and `docs/thought-experiments/` directories hold DR and TE records when needed.
 - Do not commit local state files (for example `.grok`, `.grok.lock`) or generated binaries.
 
 ## Build, Test, and Development Commands
-- `go test ./...` runs the test suite.
-- `gofmt -w .` (or `go fmt ./...`) formats Go code.
+- Run Go tests from the relevant tool module, for example `tools/mint-handle/`.
+- Keep Go code `gofmt`-clean.
 
 ## Agent Instruction Architecture (Required)
-- `AGENTS.md` is the canonical home for repo-wide protocol, workflow, and vocabulary rules. Role-specific files such as `AGENTS-codex.md` and `AGENTS-ppx.md` are overlays: they may add stricter role constraints, environment setup, and role-specific procedures, but they must not duplicate or relax canonical repo-wide rules. (DI-034-20260508-060134)
-- When a rule applies to every agent or every repo artifact, move it here and replace role-file copies with pointers. When a rule applies only to one agent's runtime environment, identity, credentials, branch lifecycle, or private logging system, keep it in that role overlay. (DI-034-20260508-060134)
-
-## Promise Action Minimalism (Required)
-- Future PromiseGrid protocol, simulation, POC, scoring, generation, and guide work must not invent workflow-specific top-level action kinds by default. The default future-facing top-level semantic action is `promise`. (DI-mosoj)
-- Treat observation as a promise that the promiser observed something from its local vantage. Treat refusal as absence of a promise, a promise not to do something, or a promise that the agent does not currently promise the requested behavior. (DI-mosoj)
-- Treat repair, offer, counteroffer, acceptance, routing, introduction, redemption, transfer, storage, computation, TCP-link changes, authorization, dispatch, grant, registration, and enforcement as pCID-defined payload semantics, local trust/evidence interpretation, or implementation-local mechanics unless a scoped TE/DI proves a distinct wire-level role. (DI-mosoj)
-- Before adding any new top-level action kind, stop and answer: why is this not just an agent's voluntary promise with pCID-defined payload meaning? If that answer is not explicit in a locked TE/DI, do not add the action kind. (DI-mosoj)
-- POC7 through POC10 action names, including refusal and observation labels, are historical executable evidence, not the forward naming pattern. Do not rewrite scored/generated artifacts in place; supersede or reframe them when reused. (DI-mosoj; supersedes DI-fitav)
-
-## POC Superset Discipline (Required)
-- Future PromiseGrid POCs must be supersets of the previous POC's implemented behavior, architecture lessons, analyzer gates, and documented acceptance criteria unless a scoped DI explicitly declares the new POC non-superset and lists every intentionally dropped feature. (DI-sinur)
-- A new POC may add focus, specialization, or new protocol surfaces, but it must not silently regress app/kernel boundaries, local trust semantics, monitor/analyzer gates, pCID routing, Promise Theory vocabulary, or previously proven workflows. (DI-sinur)
-- When repairing or extending a POC, the analyzer must include inherited regression gates for the prior POC lineage, and the README or run narrative must state whether the POC is a superset or cite the DI authorizing an exception. (DI-sinur)
-
-## DEV-GUIDE-RESOURCES.md
-
-- Update DEV-GUIDE-RESOURCES.md file when a cited or relevant DR, DI, TE, or TODO is updated, when a cited draft spec freezes, or when the PromiseGrid Development Guide (https://github.com/ciwg/promisegrid-dev-guide) settles prose that supersedes a wire-lab note. Source: `DI-nunut`.
-- Whenever `DEV-GUIDE-RESOURCES.md` is updated, also regenerate its top
-  `## Current Design State` section by Codex LLM analysis of the current
-  simulations and root `results/` evidence. The section must read like a
-  concise protocol design document for PromiseGrid kernel and app-guide
-  developers, not a wall of prose. It must derive examples from consensus
-  across near-contender simulations rather than from only the top score, prefer
-  simple positional pCID-selected wire shapes and deterministic pCID-defined
-  payload contracts, use Burgess Promise Theory vocabulary, preserve
-  small-device and 100-year durability constraints, avoid capability-shopping
-  maps or large general-purpose claim-card maps as the apparent consensus, call
-  out weak or missing coverage, and must not present simulations, proposal
-  children, or score results as final PromiseGrid APIs. Source: `DI-baral`.
+- `AGENTS.md` is the canonical home for repo-wide workflow, review, and vocabulary rules.
+- Keep repo-wide rules here; keep private runtime notes out of committed files.
 
 ## Decision-First Specification and Compliance Protocol (Required)
 - Decision-first means decisions must be locked before coding; it does not forbid pre-decision analysis such as required thought experiments.
 - The agent must collect and lock user decisions before making any code edits for a task.
-- Locked decisions must be recorded as Decision Intent Log entries in the relevant `protocols/<slug>.d/TODO/TODO-<handle>-<slug>.md` file(s) with clear intent and rationale.
+- Locked decisions must be recorded as Decision Intent Log entries in the relevant `TODO/TODO-<handle>-<slug>.md` file(s) with clear intent and rationale.
+- Existing numeric TODO and DI records are legacy records and remain valid until migrated.
 - The agent must ask decision questions up front in a single intake round whenever possible.
 - Required decision categories are architecture, design/behavior, implementation approach, function naming, variable naming, and file/path decisions.
 - The agent must ask these as multiple-choice questions whenever practical.
@@ -79,7 +52,7 @@
 - The agent must state what each alternative makes easier, what it makes harder, and what new obligations it creates.
 
 ### TE Authoring Conventions
-- Named actors follow the cryptography-literature alphabetical convention. Use Alice, Bob, Carol, Dave, Ellen, Frank, and so on for cooperative actors; use Mallory for adversaries; name Steve explicitly only when his repo-owner role is load-bearing in the scenario. Use this convention in TEs, scenario analyses, tabletop simulations, DR/DI prose, and worked examples in specs or docs when named actors are useful. Do not invent ad-hoc names when the convention fits. (DI-034-20260508-060134)
+- Named actors follow the cryptography-literature alphabetical convention. Use Alice, Bob, Carol, Dave, Ellen, Frank, and so on for cooperative actors; use Mallory for adversaries. Use this convention in TEs, scenario analyses, tabletop simulations, DR/DI prose, and worked examples in specs or docs when named actors are useful. Do not invent ad-hoc names when the convention fits.
 
 ### TE Output to DF
 - After the TE, the agent must identify:
@@ -90,7 +63,7 @@
 - Final DF questions must be framed from the surviving alternatives identified by the TE. The agent must not ask broad DF questions that ignore TE results.
 
 ### TE Artifacts
-- The agent must track required TEs in the relevant `protocols/<slug>.d/TODO/TODO-<handle>-<slug>.md`.
+- The agent must track required TEs in the relevant `TODO/TODO-<handle>-<slug>.md`.
 - For each completed TE, the agent must write a verbatim copy of the thought experiment into a standalone file under `docs/thought-experiments/`.
 - The doc filename must begin with the TE ID and then use a descriptive suffix.
 - The doc must stand on its own and include:
@@ -122,24 +95,9 @@
 
 ### TE Editing Policy (Required)
 
-Once a TE is filed in `docs/thought-experiments/`, edits to it follow a categorized policy. The policy is locked in `DI-020-20260502-213103` (categorized editing regimes), `DI-020-20260502-213104` (uniform applicability across all TE corpora; this rule applies wherever TEs are stored, not just under `docs/thought-experiments/`), and `DI-020-20260502-213105` (holistic reading by default for substantive questions, single-TE reading allowed for obviously mechanical ones). The Cat-1 clause of `DI-020-20260502-213103` was superseded on 2026-05-02 by `DI-020-20260502-232651` (Cat-1a / Cat-1b split). Four further Cat-3 navigational refinements are appended to TE-dabol (`docs/thought-experiments/TE-dabol-te-editing-policy-and-holistic-corpus.md`) and to TE-vudaf (`docs/thought-experiments/TE-vudaf-editing-policy-tabletop.md`); the agent must read both TEs and their `## Refinements` sections before performing any TE edit.
-
-The seven categories are:
-
-- **Cat-1a (current-pointer paths).** A path reference that names the current location of a file. Mechanical sweep in place; no top-of-file note required.
-- **Cat-1b (historical-quotation paths).** A path reference that quotes an earlier corpus state — inside a markdown blockquote, attributed to another TE ("TE-N states ..."), in past tense ("TE-magup used the path ..."), inside a `## Refinements` section, supersedence note, or `Decision status` line. Left untouched; rewriting would falsify the historical record. Per-match classification with five heuristics (quotation context; Refinements / supersedence framing; past tense; default Cat-1a; when-in-doubt-Cat-1b). Sweep tools may emit matches with surrounding context for human review but must not auto-rewrite.
-- **Cat-2 (vocabulary updates).** A rename of a term whose meaning is unchanged (typo fixes, terminology consolidation). In place, with a top-of-file note pointing at the driving TE or TODO. The note must enumerate by ID every DI that lives in the affected TE, paired with an explicit promise that the rewrite preserves each DI's meaning. A TE without DIs gets a one-line `no DIs in this file` note. Form: `Cat-2 vocabulary update per <driving TE or TODO>: '<old term>' -> '<new term>'. The following DIs in this file are unchanged in meaning: DI-XXX-..., DI-YYY-..., DI-ZZZ-... .` Mandatory pre-step: grep the entire corpus for the old term inside quotation contexts (markdown blockquotes; fenced code blocks presented as citations; single/double-quoted phrases attributed to another TE via `TE-N states`, `TE-N reads`, `originally said`, `as of TE-N`, `the corpus showed`); each match is classified Cat-2 (sweep) or Cat-2-historical (leave) per the same heuristics as Cat-1a/Cat-1b.
-- **Cat-3 (navigational forward pointers).** Append a dated entry to the TE's `## Refinements` section (created if absent, placed after `## Decision status`) describing where the affected reader should now look. The TE body above is unchanged. No DI is filed for a Cat-3 entry. Procedural tightenings of an existing category's how-to are Cat-3.
-- **Cat-4 (resolved-implication forward pointers).** Same shape as Cat-3, used when an item from the TE's `Implications and future work` list has resolved (a TODO filed; a DR opened; a downstream TE landed). Append-only; no body edit.
-- **Cat-5 / Cat-6 / Cat-7 (substantive supersedence).** A material change to a locked DI's meaning, scope, or applicability requires a new TE that supersedes the affected one. The new TE carries its own DFs and DIs; the older TE's `## Decision status` is updated to `superseded by TE-<id>` and its top-of-file `## Status` field is updated to `superseded by TE-<id> / DI-<id>`. The older TE's body is otherwise untouched.
-
-Every TE in the corpus carries a top-of-file `## Status` field placed immediately after the TE ID line. Canonical values: `needs DF`, `decided`, `decided, refined`, `superseded by TE-<id> / DI-<id>`, `withdrawn`. Legacy values preserved during retrofit: `stub`, `open`, `recommended for immediate adoption`, `locked for the <protocol>`. New TEs prefer canonical values; the field is updated by Cat-1a sweep when the TE's state changes.
-
-The `## Refinements` section is the single append-only home for Cat-3 / Cat-4 entries on a TE. Entries are dated (`### YYYY-MM-DD — <title>`) and ordered chronologically. The body of the TE above the `## Refinements` section is treated as historical evidence: a Cat-1a path-rename or Cat-2 vocabulary sweep on the body is permitted under its category rules; a Cat-3 / Cat-4 forward-pointer is appended to `## Refinements` rather than rewriting the body; a Cat-5 / Cat-6 / Cat-7 substantive change is filed as a new superseding TE rather than as an edit. The four Cat-3 Refinements on TE-dabol are themselves examples of this shape: each one tightens a category's procedure without changing the locked policy, and is filed as a Refinement entry rather than as a new DI.
-
-Reading default: holistic. When deciding whether an edit is mechanical or substantive, when interpreting a single TE's claims, or when reasoning about whether a refinement is Cat-3 or Cat-5–7, the agent must read the corpus holistically (the affected TE plus the corpus's editing-policy chain: TE-dabol, TE-vudaf, and any other TEs they cite or that cite them). Single-TE reading is reserved for obviously mechanical questions (a single typo; a path that has demonstrably moved; a Status field retrofit) and only after the holistic read has confirmed the question is mechanical. When in doubt, read holistically.
-
-Applicability: this policy applies uniformly to every TE corpus in this repository, regardless of which protocol or harness directory it lives in. Per-protocol corpora may add stricter rules but may not relax these rules.
+- Treat TE files as durable analysis records. Do not rewrite filed TE history for style cleanup.
+- Use a `## Refinements` section for navigational updates or resolved follow-up notes.
+- Use a new superseding TE for material changes to a prior TE's conclusion, scope, or decision impact.
 
 ### Naming Decisions (Required)
 - The agent must not invent function names or variable names that are not already covered by locked naming decisions.
@@ -188,6 +146,17 @@ Applicability: this policy applies uniformly to every TE corpus in this reposito
 - Add and maintain explanatory comments for non-obvious logic.
 - Use `git mv` for file moves/renames to preserve history.
 
+## Diff Discipline (Required)
+- Keep changes minimal and directly tied to the user's request or locked decision.
+- Do not rewrite files from scratch, arbitrarily rewrap lines, reorder unrelated sections, or normalize prose style unless the user explicitly asks for that cleanup.
+- This applies to `AGENTS.md`, slides, white papers, drafts, TODO files, code, and all other repo files.
+- For public prose artifacts, edits must be traceable to a concrete user request or locked decision, not general polish.
+
+## Runtime Artifact Hygiene (Required)
+- Never put temporary test files, Go cache directories, build caches, or other runtime artifacts in this repo.
+- Runtime artifacts must go under `/tmp` subdirectories.
+- Configure tools with temp/cache paths under `/tmp` when they would otherwise write into the working tree.
+
 ## Error Handling Policy (Required)
 - Never use `|| true` in scripts, templates, or make recipes. Always inspect
   command exit codes explicitly with `if/else` branches and handle each outcome.
@@ -203,12 +172,19 @@ Applicability: this policy applies uniformly to every TE corpus in this reposito
 - Person identity in DR/DI records must use full email with label format: `user@example.com (FirstName)`.
 - In DRs, `Asked by` and person-valued `Waiting on` fields must use that format.
 - In DIs, `Author` must use that format.
-- A DI `Author` is the decision-maker, not merely the recorder. If an agent records a DI for Steve's chat decision, Steve is the `Author`; an agent may be `Author` only when Steve explicitly delegates that decision authority to that agent. (DI-034-20260508-060134)
+- A DI `Author` is the decision-maker, not merely the recorder. See
+  the git config for this repo to detect the author's name.
 - A settled statement in docs (or critical logic in code comments) must cite at least one DI ID.
 - An unresolved question or uncertainty must cite at least one DR ID.
 - If an unresolved question has no DR yet, create a DR before finalizing the change.
-- During TODO-kugod migration, apply these rules incrementally as sections/files are brought under DR/DI tracking.
-- Intent: New coordination artifacts use a single proquint handle namespace so TODO, TE, DR, and DI references do not depend on timestamp or integer allocation. Source: DI-nisam
+- New coordination artifacts use a single proquint handle namespace so TODO, TE, DR, and DI references do not depend on timestamp or integer allocation.
+- Existing numeric TODO and DI records remain valid legacy records until migrated.
+
+## Public Artifact Provenance (Required)
+- Do not put DI, DR, TODO, or TE references in slides; keep public decks visually clean.
+- In white papers, use GitHub Markdown footnote tags for DI, DR, TODO, or TE references.
+- White papers with DI, DR, TODO, or TE footnotes must include a `## References` section at the bottom of the document.
+- The `## References` section must cite the appropriate repo files using relative file paths so readers can find the detailed record.
 
 
 ## Comment Preservation Protocol (Required)
@@ -223,7 +199,7 @@ Applicability: this policy applies uniformly to every TE corpus in this reposito
   - Optional: TODO file/section reference for faster lookup.
 - If a comment must be dropped with no replacement, stop and ask the user before proceeding.
 - Before editing a file, review existing comments in that file.
-- Maintain a `## Decision Intent Log` at the top of relevant `protocols/<slug>.d/TODO/TODO-<handle>-<slug>.md` files.
+- Maintain a `## Decision Intent Log` at the top of relevant `TODO/TODO-<handle>-<slug>.md` files.
 - Treat DI logs as append-only history. Do not rewrite or delete prior entries.
 - When intent evolves, add a new DI entry and set `Supersedes: <old-di-id>`.
 - DI entries must include:
@@ -288,25 +264,33 @@ Reference pattern:
 - From TODO files: `../DR/<filename>.md`
 
 
+## TODO Tracking
+- Maintain a `./TODO/` directory for tracking tasks and plans.
+- Maintain a `./TODO/TODO.md` file that lists small tasks and the other TODO files.
+- New TODO files use `TODO-<handle>-<slug>.md`, where `<handle>` is minted by `tools/mint-handle`.
+- Existing numeric TODO files remain valid legacy records until migrated.
+- Sort `TODO.md` by priority, not filename.
+- When completing a TODO, mark it as done by checking it off.
+- Within a TODO file, include numbered checkboxes for subtasks where helpful.
+
 ## Testing Guidelines
 - Use Go's standard `testing` package with deterministic tests.
 - Avoid network calls in tests unless explicitly required and documented.
-- When changing `plan/run` behavior, add coverage for both command paths when possible.
+- Put test temp files and Go caches under `/tmp`, not inside this repo.
 
 ## Commit & Pull Request Guidelines
 - Treat a line containing only `commit` as: add and commit all changes with an AGENTS-compliant message.
 - Use short, imperative, capitalized commit subjects.
 - Summarize changes per file in commit bodies.
 - Stage files explicitly (avoid `git add .` / `git add -A`).
-- Do not open GitHub pull requests for normal wire-lab convergence. Steve explicitly dropped the require-PR merge rule; merge by the role-specific direct-push workflow instead. (DI-001-20260428-195702; DI-034-20260508-060134)
-- Do not force-push repo branches unless a scoped DI/DR explicitly authorizes the exception. Role overlays may add stricter no-force-push rules for their branches or may document a narrow private-remote exception, but the repo-wide default is no history rewrites. (DI-034-20260508-060134)
-- Do not commit local state files, generated binaries, credentials, tokens, signing keys, or other secrets. (DI-034-20260508-060134)
+- Do not open GitHub pull requests unless the user explicitly asks for one.
+- Do not force-push repo branches unless the user explicitly authorizes the exception.
+- Do not commit local state files, generated binaries, credentials, tokens, signing keys, or other secrets.
 
 ## Glossary
-- **TE**: Thought Experiment. Analysis doc under `docs/thought-experiments/TE-<handle>-<slug>.md` or an approved per-protocol TE corpus. The handle is a proquint minted by `tools/mint-handle`. (DI-034-20260508-060134)
-- **DR**: Decision Request. Open question or decision-tracking record under `DR/DR-<handle>-<slug>.md`, where `<handle>` is minted by `tools/mint-handle`. (DI-nisam; DI-034-20260508-060134)
-- **DI**: Decision Intent. Locked decision record inside a `## Decision Intent Log` in a protocol TODO file. New DI ID format is `DI-<handle>`, where `<handle>` is minted by `tools/mint-handle`. (DI-nisam; DI-034-20260508-060134)
-- **DF**: Decision Framing. The multiple-choice intake round used to lock a decision after any required TE narrows the alternatives. (DI-034-20260508-060134)
-- **TODO**: Task-tracking file under `protocols/<slug>.d/TODO/TODO-<handle>-<slug>.md`, where `<handle>` is minted by `tools/mint-handle`. The master cross-listed index is `protocols/wire-lab.d/TODO/TODO.md`; per-protocol queues live at `protocols/<slug>.d/TODO/TODO.md`. (DI-nisam; DI-034-20260508-060134)
-- **twig**: Short kebab-case task name used in branch names, usually as `<user>/<twig>` such as `ppx/<twig>` or `stevegt/<twig>`. (DI-034-20260508-060134)
-- **pCID**: Protocol CID. A pCID is the content hash of a spec document that defines a wire protocol; it is analogous to a TCP/UDP port number with no central registry because the spec hash is the port number. A pCID is not the hash of a particular message, payload, or promise body. (DI-009-20260429-173359; DI-034-20260508-060134)
+- **TE**: Thought Experiment. Analysis doc under `docs/thought-experiments/TE-<handle>-<slug>.md`. The handle is a proquint minted by `tools/mint-handle`.
+- **DR**: Decision Request. Open question or decision-tracking record under `DR/DR-<handle>-<slug>.md`, where `<handle>` is minted by `tools/mint-handle`.
+- **DI**: Decision Intent. Locked decision record inside a `## Decision Intent Log` in a TODO file. New DI ID format is `DI-<handle>`, where `<handle>` is minted by `tools/mint-handle`.
+- **DF**: Decision Framing. The multiple-choice intake round used to lock a decision after any required TE narrows the alternatives.
+- **TODO**: Task-tracking file under `TODO/TODO-<handle>-<slug>.md`, where `<handle>` is minted by `tools/mint-handle`. Existing numeric TODO files are legacy records until migrated.
+- **pCID**: Protocol CID. A pCID is the content hash of a spec document that defines a wire protocol; it is analogous to a TCP/UDP port number with no central registry because the spec hash is the port number. A pCID is not the hash of a particular message, payload, or promise body.

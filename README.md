@@ -1,6 +1,6 @@
 class: center, middle
 
-# Distributed manufacturing needs distributed infrastructure
+# Toward Community-Owned Infrastructure for Distributed Manufacturing
 
 ## PromiseGrid as an experiment in shared coordination
 
@@ -16,7 +16,7 @@ Open by locating the talk in the workshop theme. This is a talk about the digita
 
 # Outline
 
-- Why distributed manufacturing needs coordination infrastructure
+- Why distributed manufacturing needs community-owned coordination infrastructure
 - The community infrastructure problem CSWG is addressing
 - Promise Theory as a practical coordination language
 - PromiseGrid's model for community-owned computation and governance
@@ -31,7 +31,7 @@ Use this slide to set expectations for the arc. Start with the manufacturing con
 
 class: center, middle
 
-# Distributed manufacturing needs distributed infrastructure
+# Toward Community-Owned Infrastructure for Distributed Manufacturing
 
 - Community Systems Working Group
 - PromiseGrid as an experiment in shared coordination

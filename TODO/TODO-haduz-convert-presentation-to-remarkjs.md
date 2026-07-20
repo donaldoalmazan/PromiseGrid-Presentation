@@ -17,6 +17,15 @@ Intent: Move this completed task onto the repo's proquint TODO naming convention
 Constraints: Use `git mv` for the file rename; keep the existing slide and whitepaper artifacts unchanged; preserve the historical `DI-001-20260709-154911` entry as prior provenance.
 Affects: `TODO/TODO.md`, `TODO/001-convert-presentation-to-remarkjs.md`, `TODO/TODO-haduz-convert-presentation-to-remarkjs.md`
 
+ID: DI-sibuf
+Date: 2026-07-19 23:33:12
+Author: 43122154+donaldoalmazan@users.noreply.github.com (donaldoalmazan)
+Status: active
+Decision: Add explicit HTML slide-number comments to the remark Markdown deck in `README.md`.
+Intent: Make each slide's source location immediately identifiable without changing visible slide content or the generated HTML shell.
+Constraints: Use comments formatted exactly as `<!-- Slide N -->`; keep numbering in source order; leave `index.html`, `index.thtml`, and runtime code unchanged.
+Affects: `README.md`, `TODO/TODO-haduz-convert-presentation-to-remarkjs.md`
+
 ## Locked Decisions
 
 - DEC-001 Architecture: Create a single Markdown deck only; do not add an HTML shell, CSS, assets, scripts, or generated state.

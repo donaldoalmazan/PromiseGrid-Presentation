@@ -1,5 +1,7 @@
 class: center, middle
 
+<!-- Slide 1 -->
+
 # Toward Community-Owned Infrastructure for Distributed Manufacturing
 
 PromiseGrid
@@ -13,6 +15,8 @@ Show & Tell: Democratised, Decentralised & Distributed Manufacturing
 Open by locating the talk in the workshop theme. This is a talk about the digital and organizational infrastructure underneath distributed manufacturing: how communities coordinate work, share capacity, make commitments, and govern the systems they depend on.
 
 ---
+
+<!-- Slide 2 -->
 
 # Outline
 
@@ -29,6 +33,8 @@ Use this slide to set expectations for the arc. Start with the manufacturing con
 
 ---
 
+<!-- Slide 3 -->
+
 # Distributed manufacturing already exists. The question is who can govern it.
 
 - Global supply chains are already distributed across firms, factories, logistics, and software systems
@@ -41,6 +47,8 @@ Avoid implying that distributed manufacturing is not already happening. It is ha
 
 ---
 
+<!-- Slide 4 -->
+
 # The missing layer is governable coordination
 
 - Small fabs coordinate through calendars, spreadsheets, chat, booking tools, file stores, and machine interfaces
@@ -52,6 +60,8 @@ Avoid implying that distributed manufacturing is not already happening. It is ha
 This slide connects the talk to the workshop framing and to the other presenters. The visible production layer gets attention first: machines, files, materials, and skills. But underneath it is a coordination layer. In many small shops that layer is stitched together from tools that were not designed for shared governance across independent organizations. If that layer stays centralized, fragile, or dependent on one vendor or one exhausted organizer, then the network inherits the same weaknesses it was trying to move away from.
 
 ---
+
+<!-- Slide 5 -->
 
 # CSWG started with a simple problem: communities burn out on infrastructure
 
@@ -67,6 +77,8 @@ Keep this grounded. CSWG did not start from an abstract fascination with decentr
 
 ---
 
+<!-- Slide 6 -->
+
 # The bottleneck is not just production capacity. It is coordination capacity.
 
 - Shared work depends on managing access, commitments, decisions, machine state, and conflict
@@ -79,6 +91,8 @@ Keep this grounded. CSWG did not start from an abstract fascination with decentr
 This is the pivot slide. A distributed manufacturing network can have skilled people and useful machines and still struggle because coordination is too fragile. Who can reserve which machine and under what conditions? Who is allowed to approve a job? Who promises maintenance? What happens when two labs depend on the same material stock? What happens when one site cannot complete a task and another site might be able to pick it up? These are operational questions, but they are also governance questions.
 
 ---
+
+<!-- Slide 7 -->
 
 # Promise Theory gives language for distributed coordination
 
@@ -93,6 +107,8 @@ Promise Theory is useful here because it starts from a very practical observatio
 
 ---
 
+<!-- Slide 8 -->
+
 # ATP and CTP already make promises visible in manufacturing
 
 - Available to Promise asks: what supply can actually be committed?
@@ -104,6 +120,8 @@ Promise Theory is useful here because it starts from a very practical observatio
 This is the bridge into manufacturing language. Available to Promise, or ATP, asks whether inventory or supply can actually be committed to demand. Capable to Promise, or CTP, asks whether the production system has the capacity and capability to meet that demand under the required conditions. PromiseGrid is not trying to replace that language with something more abstract. It is asking what infrastructure would let these promise-shaped commitments become explicit, shareable, and locally trustworthy across a network of independent sites.
 
 ---
+
+<!-- Slide 9 -->
 
 # PromiseGrid is a decentralized computing infrastructure beneath the app layer
 
@@ -120,6 +138,8 @@ Use the original PromiseGrid framing carefully: if the internet gave us decentra
 
 ---
 
+<!-- Slide 10 -->
+
 # The technical model combines portability, capabilities, consensus, and local trust
 
 - WASI helps code run across different devices and operating systems
@@ -132,6 +152,8 @@ Use the original PromiseGrid framing carefully: if the internet gave us decentra
 This is the slide for technically curious people in the room. Keep it high-level and legible. WASI matters because distributed manufacturing will not run on one clean hardware footprint. Capability-based security matters because shops need narrow, contextual permissions: inspect a machine log but do not change policy, start an approved workflow but not any workflow, contribute to a job without inheriting every privilege. The recent wire-lab work is testing those ideas in more concrete ways: containerized agents exchanging exact messages over TCP, signed capability tokens, content-addressed storage, object transfer, peer sync, retention promises, and Git bridge experiments.
 
 ---
+
+<!-- Slide 11 -->
 
 # A PromiseGrid message is explicit about what is being promised
 
@@ -152,6 +174,8 @@ This is the technical explainer slide, but keep it tied to operations. The messa
 
 ---
 
+<!-- Slide 12 -->
+
 # Current experiments are testing workflows, devices, containers, sync, and collaboration
 
 - Workflow experiments: shipping, accounting, device roles, evidence, and trust
@@ -165,6 +189,8 @@ This is where you summarize the recent work without drowning people in proof-of-
 
 ---
 
+<!-- Slide 13 -->
+
 # If this works, local production networks gain more governable infrastructure
 
 - Less dependence on centralized SaaS and fragile gatekeepers
@@ -177,6 +203,8 @@ This is where you summarize the recent work without drowning people in proof-of-
 This slide links the talk back to the wider workshop. The goal is not decentralization for its own sake. The goal is governable resilience. Fablabs and small manufacturing networks need ways to share selected resources, commitments, and workflows without surrendering control to one platform owner. If PromiseGrid or something like it proves useful, it could become enabling infrastructure underneath many tools rather than a single app that replaces everything.
 
 ---
+
+<!-- Slide 14 -->
 
 # Can communities own the systems that make cooperation possible?
 

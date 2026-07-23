@@ -27,6 +27,15 @@ Intent: Make the white paper more generally about PromiseGrid in decentralized m
 Constraints: Keep changes section-local and reviewable; do not rewrite paragraphs that do not need README alignment or audience generalization; do not touch slides.
 Affects: `whitepaper_draft.md`, `TODO/TODO-sukat-whitepaper-fab26-cleanup.md`
 
+ID: DI-movaf
+Date: 2026-07-23 15:13:41
+Author: stevegt@t7a.org (Steve Traugott)
+Status: active
+Decision: Tighten repeated audience and supply-chain framing introduced by `sukat.9`.
+Intent: Keep the white paper generally about decentralized manufacturing while mentioning supply-chain coordination only where it adds meaning, and define the audience once instead of repeating long lists.
+Constraints: Keep edits small and section-local; do not rewrite the paper; do not touch slides, diagrams, references, or unrelated paragraphs.
+Affects: `whitepaper_draft.md`, `TODO/TODO-sukat-whitepaper-fab26-cleanup.md`
+
 # TODO sukat - Clean Up FAB26 White Paper
 
 ## Audience and Structure
@@ -39,6 +48,8 @@ Affects: `whitepaper_draft.md`, `TODO/TODO-sukat-whitepaper-fab26-cleanup.md`
   Make the white paper less verbose and more scannable with shorter paragraphs, bullets, and other structure. Reduce jargon where possible, explain unavoidable terms plainly, and make the document feel more practical, participatory, and oriented toward learning, building, sharing, and local capacity.
 - [x] sukat.12 Make smaller white paper corrections.
   Correct the scale framing in the distributed-manufacturing section, replace third-person project-description wording, and add Promise Theory references without doing a broad style rewrite.
+- [x] sukat.13 Tighten repeated audience and supply-chain framing.
+  Remove repeated "and Supply Chains" title/heading phrasing, define the audience once, and keep supply-chain wording only where it adds meaning.
 
 ## Technical Alignment
 

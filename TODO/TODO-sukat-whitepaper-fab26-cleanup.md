@@ -9,6 +9,15 @@ Intent: Keep the next white paper edits explicit, audience-focused, and easy to 
 Constraints: Keep changes minimal and directly tied to these tasks; avoid wholesale rewrites; reduce jargon and verbosity; keep slides free of visible DI/DR/TODO/TE references; use white paper footnotes and a bottom `## References` section only when internal DI/DR/TODO/TE references are useful to readers.
 Affects: `whitepaper_draft.md`, `README.md`, `TODO/TODO.md`, `TODO/TODO-sukat-whitepaper-fab26-cleanup.md`
 
+ID: DI-mihif
+Date: 2026-07-23 13:26:07
+Author: stevegt@t7a.org (Steve Traugott)
+Status: active
+Decision: Make smaller white paper corrections for scale framing, project voice, and Promise Theory references.
+Intent: Keep the next white paper edit narrow and reviewable after the broader style pass was rejected, while correcting the scale framing of existing manufacturing infrastructure, using first-person PromiseGrid project voice, and adding public Promise Theory references.
+Constraints: Keep the diff minimal and reviewable; do not rewrite the outline; touch only the agreed white paper paragraphs, mechanical workshop-as-place fixes, and this TODO record.
+Affects: `whitepaper_draft.md`, `TODO/TODO-sukat-whitepaper-fab26-cleanup.md`
+
 # TODO sukat - Clean Up FAB26 White Paper
 
 ## Audience and Structure
@@ -19,6 +28,8 @@ Affects: `whitepaper_draft.md`, `README.md`, `TODO/TODO.md`, `TODO/TODO-sukat-wh
   Prefer "current prototype architecture" when describing stage0/stage1, and "recent proof-of-concept work points toward..." when grounding claims in wire-lab evidence.
 - [x] sukat.3 Reduce the wall-of-text problem.
   Make the white paper less verbose and more scannable with shorter paragraphs, bullets, and other structure. Reduce jargon where possible, explain unavoidable terms plainly, and make the document feel more practical, participatory, and oriented toward learning, building, sharing, and local capacity.
+- [x] sukat.12 Make smaller white paper corrections.
+  Correct the scale framing in the distributed-manufacturing section, replace third-person project-description wording, and add Promise Theory references without doing a broad style rewrite.
 
 ## Technical Alignment
 

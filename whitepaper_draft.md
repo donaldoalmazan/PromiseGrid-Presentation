@@ -1,5 +1,15 @@
 # Toward Community-Owned Infrastructure for Decentralized Manufacturing
 
+```
+######  ######     #    ####### #######
+#     # #     #   # #   #          #
+#     # #     #  #   #  #          #
+#     # ######  #     # #####      #
+#     # #   #   ####### #          #
+#     # #    #  #     # #          #
+######  #     # #     # #          #
+```
+
 ## Table of Contents
 
 - [CSWG, PromiseGrid, and the Infrastructure Gap in Distributed Manufacturing](#cswg-promisegrid-and-the-infrastructure-gap-in-distributed-manufacturing)
